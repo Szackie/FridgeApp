@@ -1,0 +1,1 @@
+INSERT into todos(text,done) VALUES ('masło',1);
