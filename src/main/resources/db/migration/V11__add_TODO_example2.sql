@@ -1,1 +1,0 @@
-INSERT into todos(text,done) VALUES ('jajko',1);

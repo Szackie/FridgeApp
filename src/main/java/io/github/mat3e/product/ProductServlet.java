@@ -1,4 +1,4 @@
-package io.github.mat3e.todo;
+package io.github.mat3e.product;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -11,23 +11,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(name="Todo Servlet",urlPatterns = "/api/todos/*")
-public class TodoServlet extends HttpServlet {
+@WebServlet(name="Product Servlet",urlPatterns = "/api/product/*")
+public class ProductServlet extends HttpServlet {
 
-    private TodoRepository todoRepository;
+    private ProductRepository productRepository;
     private ObjectMapper mapper;
-    private final Logger logger=LoggerFactory.getLogger(TodoServlet.class);
+    private final Logger logger=LoggerFactory.getLogger(ProductServlet.class);
 
     @SuppressWarnings("unused")
-    public TodoServlet(){
-        this(new TodoRepository(),new ObjectMapper());
+    public ProductServlet(){
+        this(new ProductRepository(),new ObjectMapper());
     }
 
-    public TodoServlet(TodoRepository repository,ObjectMapper mapper){
+    public ProductServlet(ProductRepository repository, ObjectMapper mapper){
         this.mapper=mapper;
-        this.todoRepository =repository;
+        this.productRepository =repository;
         }
 
     @Override
@@ -36,7 +35,7 @@ public class TodoServlet extends HttpServlet {
         String reqPath=req.getPathInfo();
         try {
             var todoId = Integer.valueOf(reqPath.substring(1));
-            var todo=todoRepository.toggleTodo(todoId);
+            var todo= productRepository.toggleProduct(todoId);
             resp.setContentType("application/json;charset=UTF-8");
             mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
             mapper.writeValue(resp.getOutputStream(),todo);
@@ -51,24 +50,24 @@ public class TodoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-var newTodo=mapper.readValue(req.getInputStream(),Todo.class);
-mapper.writeValue(resp.getOutputStream(),todoRepository.addTodo(newTodo));
+var newProduct=mapper.readValue(req.getInputStream(), Product.class);
+mapper.writeValue(resp.getOutputStream(), productRepository.addProduct(newProduct));
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         logger.info("Request goes from "+getServletName());
         resp.setContentType("application/json;charset=UTF-8");
-        mapper.writeValue(resp.getOutputStream(), todoRepository.findAll());
+        mapper.writeValue(resp.getOutputStream(), productRepository.findAll());
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        for(Todo todo: todoRepository.findAll())
-        if(todo.isDone())
-            todoRepository.deleteTodo(todo.getId());
+        for(Product product: productRepository.findAll())
+        if(product.isDone())
+            productRepository.deleteProduct(product.getId());
         resp.setContentType("application/json;charset=UTF-8");
         mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-        mapper.writeValue(resp.getOutputStream(),todoRepository.findAll());
+        mapper.writeValue(resp.getOutputStream(), productRepository.findAll());
     }
 }

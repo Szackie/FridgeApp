@@ -1,4 +1,4 @@
-package io.github.mat3e.todo;
+package io.github.mat3e.product;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -8,9 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="todos")
+@Table(name="products")
 
-public class Todo {
+public class Product {
     @Id
     @GeneratedValue(generator="inc")
     @GenericGenerator(name="inc", strategy = "increment")
@@ -18,8 +18,8 @@ public class Todo {
     private String text;
     private boolean done;
 
-    public Todo(){}
-    public Todo(Integer id, String text, boolean done) {
+    public Product(){}
+    public Product(Integer id, String text, boolean done) {
         this.id = id;
         this.text = text;
         this.done = done;

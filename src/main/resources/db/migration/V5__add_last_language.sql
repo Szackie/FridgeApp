@@ -1,1 +1,0 @@
-INSERT into languages(welcomeMsg,code) VALUES ('dobry wieczór','noc');

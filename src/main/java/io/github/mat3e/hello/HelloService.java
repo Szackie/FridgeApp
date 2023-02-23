@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Optional;
 
 class HelloService {
-    final static String FALLBACK_NAME = "unidentified";
+    final static String FALLBACK_NAME = "undefined";
     final static Lang FALLBACK_LANG = new Lang(1, "Products from fridge: ","en");
     private final Logger logger = LoggerFactory.getLogger(HelloService.class);
     private LangRepository repository;

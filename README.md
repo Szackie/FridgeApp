@@ -1,2 +1,4 @@
-Button '-' deletes all checked(done) todos.
-Method deleteDoneTodo from JS doesn't work at all.
+Web app for storing information about products available in the fridge.
+
+*wrong db path fixed,
+*migrations refactored.
