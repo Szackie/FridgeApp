@@ -34,11 +34,11 @@ public class ProductServlet extends HttpServlet {
 
         String reqPath=req.getPathInfo();
         try {
-            var todoId = Integer.valueOf(reqPath.substring(1));
-            var todo= productRepository.toggleProduct(todoId);
+            var productId = Integer.valueOf(reqPath.substring(1));
+            var product= productRepository.toggleProduct(productId);
             resp.setContentType("application/json;charset=UTF-8");
             mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-            mapper.writeValue(resp.getOutputStream(),todo);
+            mapper.writeValue(resp.getOutputStream(),product);
         }
         catch(NumberFormatException e)
         {

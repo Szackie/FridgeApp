@@ -1,4 +1,6 @@
 Web app for storing information about products available in the fridge.
 
-*wrong db path fixed,
-*migrations refactored.
+TODO:
+*removing fridges after removing all its products and closing page
+FIX:
+*Fridge DB
