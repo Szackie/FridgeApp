@@ -8,26 +8,28 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="products")
+@Table(name = "products")
 
 public class Product {
     @Id
-    @GeneratedValue(generator="inc")
-    @GenericGenerator(name="inc", strategy = "increment")
+    @GeneratedValue(generator = "inc")
+    @GenericGenerator(name = "inc", strategy = "increment")
     private Integer id;
     private String text;
     private boolean done;
     private Integer fridge_id;
 
-    public Product(){}
+    public Product() {
+    }
 
     public Product(Integer id, String text, boolean done, Integer fridge_id) {
         this.id = id;
         this.text = text;
         this.done = done;
-        this.fridge_id=fridge_id;
+        this.fridge_id = fridge_id;
     }
-   public void setDone(boolean done) {
+
+    public void setDone(boolean done) {
         this.done = done;
     }
 
@@ -35,7 +37,7 @@ public class Product {
         return done;
     }
 
-public Integer getId() {
+    public Integer getId() {
         return id;
     }
 

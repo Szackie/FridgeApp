@@ -13,14 +13,15 @@ class LangService {
 
     private LangRepository langRepository;
 
-    LangService(){
+    LangService() {
         this(new LangRepository());
     }
-    LangService(LangRepository langRepository){
-        this.langRepository=langRepository;
+
+    LangService(LangRepository langRepository) {
+        this.langRepository = langRepository;
     }
 
-    List<LangDTO> findAll(){
+    List<LangDTO> findAll() {
 
         return langRepository
                 .findAll()

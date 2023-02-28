@@ -8,12 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="languages")
+@Table(name = "languages")
 public class Lang {
 
-@Id
-@GeneratedValue(generator="inc")
-@GenericGenerator(name="inc", strategy = "increment")
+    @Id
+    @GeneratedValue(generator = "inc")
+    @GenericGenerator(name = "inc", strategy = "increment")
     private Integer id;
     private String welcomeMsg;
     private String code;
@@ -21,8 +21,9 @@ public class Lang {
     /**
      * Hibernate (JPA) uses it
      */
-@SuppressWarnings("unused")
-public Lang (){}
+    @SuppressWarnings("unused")
+    public Lang() {
+    }
 
     public Lang(Integer id, String welcomeMsg, String code) {
         this.id = id;

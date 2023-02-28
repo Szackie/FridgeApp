@@ -22,19 +22,19 @@ public class LangServlet extends HttpServlet {
 
     @SuppressWarnings("unused")
     public LangServlet() {
-        this(new LangService(),new ObjectMapper());
+        this(new LangService(), new ObjectMapper());
     }
 
-    public LangServlet(LangService langService,ObjectMapper mapper) {
+    public LangServlet(LangService langService, ObjectMapper mapper) {
 
         this.langService = langService;
-        this.mapper=mapper;
+        this.mapper = mapper;
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         logger.info("Request goes from " + getServletName());
         resp.setContentType("application/json;charset=UTF-8");
-        mapper.writeValue(resp.getOutputStream(),langService.findAll());
+        mapper.writeValue(resp.getOutputStream(), langService.findAll());
     }
 }

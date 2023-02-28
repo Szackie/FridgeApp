@@ -36,17 +36,19 @@ public class FridgeRepository {
         return newFridge;
     }
 
-//        public void deleteFridge(Integer id) {
-//            var session = HibernateUtil.getSessionFactory().openSession();
-//            var transaction = session.beginTransaction();
-//
-//            var product = session.load(Fridge.class, id);
-//            session.delete("fridges", );
-//
-//
-//            transaction.commit();
-//            session.close();
-//        }
+    public void deleteUnusedFridge() {
+        var session = HibernateUtil.getSessionFactory().openSession();
+        var transaction = session.beginTransaction();
+        for (Fridge fridge : findAll()) {
+            if (fridge.getProductList().isEmpty()) {
+                var id = fridge.getFridge_id();
+                var emptyFridge = session.load(Fridge.class, id);
+                session.delete("fridges", emptyFridge);
+            }
+        }
+        transaction.commit();
+        session.close();
+    }
 
     public List<Fridge> findAll() {
         var session = HibernateUtil.getSessionFactory().openSession();

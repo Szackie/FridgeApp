@@ -5,17 +5,18 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
+
 @Entity
-@Table(name="fridges")
+@Table(name = "fridges")
 
 public class Fridge {
     @Id
     @GeneratedValue(generator = "inc")
-    @GenericGenerator(name = "inc",strategy = "increment")
+    @GenericGenerator(name = "inc", strategy = "increment")
     private int fridge_id;
     private String name;
-    @OneToMany
-    @JoinColumn(name="fridge_id")
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "fridge_id")
     private List<Product> productList;
 
     public String getName() {

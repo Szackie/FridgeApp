@@ -7,21 +7,22 @@ import java.util.Optional;
 
 public class LangRepository {
 
-    public List<Lang> findAll(){
+    public List<Lang> findAll() {
         var session = HibernateUtil.getSessionFactory().openSession();
-        var transaction=session.beginTransaction();
+        var transaction = session.beginTransaction();
 
-        var result = session.createQuery("from Lang",Lang.class).list();
+        var result = session.createQuery("from Lang", Lang.class).list();
 
         transaction.commit();
         session.close();
-         return result;
+        return result;
     }
-    public Optional<Lang> findById(Integer id){
-        var session = HibernateUtil.getSessionFactory().openSession();
-        var transaction=session.beginTransaction();
 
-        var result = Optional.ofNullable(session.get(Lang.class,id));
+    public Optional<Lang> findById(Integer id) {
+        var session = HibernateUtil.getSessionFactory().openSession();
+        var transaction = session.beginTransaction();
+
+        var result = Optional.ofNullable(session.get(Lang.class, id));
 
         transaction.commit();
         session.close();
