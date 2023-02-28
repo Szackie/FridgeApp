@@ -13,7 +13,7 @@
         <h1>Enter your fridge name</h1>
     </div>
     <form id="welcomeForm" class="pure-form pure-g pure-form-aligned">
-        <input id = "fridgeText" class="pure-input-rounded pure-u-1" name="name" placeholder="Fridge name">
+        <input id="fridgeText" class="pure-input-rounded pure-u-1" name="name" placeholder="Fridge name">
         <fieldset id="langs" class="pure-u-1 pure-control-group">Loading...</fieldset>
         <button id="btn" class="pure-button pure-button-primary pure-u-1">Submit</button>
     </form>
@@ -36,9 +36,6 @@
     const fridgeText = document.getElementById('fridgeText');
     const productText = document.getElementById('productText');
 
-    fetch(PRODUCT_API_URL)
-        .then(processOkResponse)
-        .then(products => products.forEach(createNewProduct));
 
     document.getElementById('deleteProduct').addEventListener('click', (event) => {
         event.preventDefault();
@@ -70,6 +67,7 @@
             }
         }
     }
+
     document.getElementById('addProduct').addEventListener('click', (event) => {
         event.preventDefault();
         fetch(PRODUCT_API_URL, {
@@ -78,48 +76,54 @@
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({text: productText.value,
-                                    fridge_id: fridgeId.value})
+            body: JSON.stringify({
+                text: productText.value,
+                fridge_id: fridgeId
+            })
         })
             .then(processOkResponse)
             .then(createNewProduct)
             .then(() => productText.value = '')
             .catch(console.warn);
-
     });
-    function createNewFridge(fridge){
-        fetch(`${FRIDGE_API_URL}/${fridge.id}`,
-            {
-                method: "GET"
-            }).then(res=>{
-                return res.json()
-        }).then(processOkResponse)
-            .then(data=>fridgeId=fridge.id)
-            .catch(console.warn);
+
+    function createNewFridge(fridge) {
+
+        fridgeId = fridge.fridge_id;
+
+        fetch(PRODUCT_API_URL)
+            .then(processOkResponse)
+            .then(products =>
+                products.forEach(createNewProduct));
     }
+
     function createNewProduct(product) {
-        const label = document.createElement('label');
-        label.classList.add('pure-checkbox');
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.checked = product.done;
-        checkbox.addEventListener('click',
-            (event) => {
-                event.preventDefault();
-                fetch(`${PRODUCT_API_URL}/${product.id}`, {
-                    method: 'PUT'
-                })
-                    .then(processOkResponse)
-                    .then(updatedProduct => checkbox.checked = !!updatedProduct.done)
-                    .catch(console.warn);
-            });
-        label.appendChild(checkbox);
-        label.appendChild(document.createTextNode(` ${product.text}`));
-        document.getElementById('allProducts').appendChild(label);
+        if (product.fridge_id == fridgeId) {
+            const label = document.createElement('label');
+            label.classList.add('pure-checkbox');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.checked = product.done;
+            checkbox.addEventListener('click',
+                (event) => {
+                    event.preventDefault();
+                    fetch(`${PRODUCT_API_URL}/${product.id}`, {
+                        method: 'PUT'
+                    })
+                        .then(processOkResponse)
+                        .then(updatedProduct => checkbox.checked = !!updatedProduct.done)
+                        .catch(console.warn);
+                });
+            label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(` ${product.text}`));
+            document.getElementById('allProducts').appendChild(label);
+        }
     }
 
     initWelcomeForm();
+
     function initWelcomeForm() {
+
         const CODE_TO_EMOJI = {
             'pl': '🇵🇱',
             'en': '🇺🇸',
@@ -155,30 +159,26 @@
                 <h1>${text}</h1>
             `;
                 });
+
+            fetch(`${FRIDGE_API_URL}`, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+                ,
+                body: JSON.stringify({
+                    name: fridgeText.value
+                })
+            })
+                .then(processOkResponse)
+                .then(createNewFridge)
+                .catch(console.warn);
+
+            welcomeForm.remove();
+            document.getElementById('productForm').style.display = 'block';
         });
-
-        document.getElementById('btn').addEventListener('click', (event) => {
-            event.preventDefault();
-
-                    fetch(FRIDGE_API_URL, {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            name: name
-                        })
-                    })
-                        .then(processOkResponse)
-                        .then(createNewFridge)
-                       // .then(() => productText.value = '')
-                        .catch(console.warn);
-
-                    welcomeForm.remove();
-                    document.getElementById('productForm').style.display = 'block';
-        });
-    }
+    };
 
     function processOkResponse(response = {}) {
         if (response.ok) {

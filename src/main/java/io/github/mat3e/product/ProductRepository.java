@@ -6,6 +6,7 @@ import java.util.List;
 
 public class ProductRepository {
 
+
     public Product addProduct(Product newProduct) {
         var session = HibernateUtil.getSessionFactory().openSession();
         var transaction = session.beginTransaction();
@@ -20,7 +21,6 @@ public class ProductRepository {
     public Product toggleProduct(Integer id) {
         var session = HibernateUtil.getSessionFactory().openSession();
         var transaction = session.beginTransaction();
-
 
         var product = session.load(Product.class, id);
         product.setDone(!product.isDone());
@@ -46,6 +46,7 @@ public class ProductRepository {
     public List<Product> findAll() {
         var session = HibernateUtil.getSessionFactory().openSession();
         var transaction = session.beginTransaction();
+
         var result = session.createQuery("from Product", Product.class).list();
         transaction.commit();
         session.close();

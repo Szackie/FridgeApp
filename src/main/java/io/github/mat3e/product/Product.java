@@ -17,14 +17,16 @@ public class Product {
     private Integer id;
     private String text;
     private boolean done;
+    private Integer fridge_id;
 
     public Product(){}
-    public Product(Integer id, String text, boolean done) {
+
+    public Product(Integer id, String text, boolean done, Integer fridge_id) {
         this.id = id;
         this.text = text;
         this.done = done;
+        this.fridge_id=fridge_id;
     }
-
    public void setDone(boolean done) {
         this.done = done;
     }
@@ -47,5 +49,13 @@ public Integer getId() {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public Integer getFridge_id() {
+        return fridge_id;
+    }
+
+    public void setFridge_id(Integer fridge_id) {
+        this.fridge_id = fridge_id;
     }
 }

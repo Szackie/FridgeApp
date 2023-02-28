@@ -21,7 +21,7 @@
         <property name="connection.password"/>
 
         <!-- JDBC connection pool (use the built-in) -->
-        <property name="connection.pool_size">3</property>
+        <property name="connection.pool_size">50</property>
 
         <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.H2Dialect</property>
@@ -34,6 +34,7 @@
         <!-- Names the annotated entity class -->
         <mapping class="io.github.mat3e.lang.Lang"/>
         <mapping class="io.github.mat3e.product.Product"/>
+        <mapping class="io.github.mat3e.fridge.Fridge"/>
     </session-factory>
 
 </hibernate-configuration>

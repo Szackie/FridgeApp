@@ -7,11 +7,12 @@ import javax.persistence.*;
 import java.util.List;
 @Entity
 @Table(name="fridges")
+
 public class Fridge {
     @Id
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc",strategy = "increment")
-    private Long fridge_id;
+    private int fridge_id;
     private String name;
     @OneToMany
     @JoinColumn(name="fridge_id")
@@ -26,11 +27,11 @@ public class Fridge {
     }
 
 
-    public void setFridge_id(Long id) {
+    public void setFridge_id(int id) {
         this.fridge_id = id;
     }
 
-    public Long getFridge_id() {
+    public int getFridge_id() {
         return fridge_id;
     }
 
