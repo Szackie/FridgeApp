@@ -7,4 +7,6 @@ DONE:
 TODO:
 *add weight/quantity attribute,
 *add expiring date attribute,
-*protected access layer (user log in with password to private fridge)
+*protected access layer (user log in with password to private fridge),
+*fix displaying foreign letters in H2 DB (need to change db),
+*use deleted products and fridges id for new ones.

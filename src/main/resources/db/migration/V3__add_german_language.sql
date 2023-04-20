@@ -1,1 +1,1 @@
-INSERT INTO languages (welcomeMsg,code) VALUES ('Produkte aus Kühlschrank: ','de');
+INSERT INTO languages (welcomeMsg,code) VALUES ('Produkte aus Kuehlschrank: ','de');

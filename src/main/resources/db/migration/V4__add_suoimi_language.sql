@@ -1,1 +1,1 @@
-INSERT INTO languages (welcomeMsg,code) VALUES ('(po fińsku)Produkty z lodowki: ', 'suo');
+INSERT INTO languages (welcomeMsg,code) VALUES ('Jaeaekaappituotteet: ', 'suo');
