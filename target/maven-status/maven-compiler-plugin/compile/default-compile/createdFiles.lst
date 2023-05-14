@@ -1,0 +1,16 @@
+io\github\mat3e\App$1.class
+io\github\mat3e\lang\Lang.class
+io\github\mat3e\HibernateUtil.class
+io\github\mat3e\hello\HelloServlet.class
+io\github\mat3e\lang\LangDTO.class
+io\github\mat3e\fridge\Fridge.class
+io\github\mat3e\lang\LangRepository.class
+io\github\mat3e\fridge\FridgeRepository.class
+io\github\mat3e\fridge\FridgeServlet.class
+io\github\mat3e\product\ProductServlet.class
+io\github\mat3e\hello\HelloService.class
+io\github\mat3e\lang\LangServlet.class
+io\github\mat3e\lang\LangService.class
+io\github\mat3e\product\Product.class
+io\github\mat3e\product\ProductRepository.class
+io\github\mat3e\App.class

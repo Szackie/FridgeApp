@@ -1,0 +1,1 @@
+INSERT INTO languages (welcomeMsg,code) VALUES ('Jaeaekaappituotteet: ', 'suo');

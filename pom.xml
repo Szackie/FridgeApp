@@ -63,8 +63,8 @@
     </dependencies>
 
     <properties>
-        <maven.compiler.source>18</maven.compiler.source>
-        <maven.compiler.target>18</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
         <junit.version>4.12</junit.version>
@@ -82,7 +82,7 @@
                     <!--FIXME-->
                     <url>jdbc:mysql://db4free.net:3306/db4free_szackie</url>
                     <user>szackie</user>
-                    <password>18051993</password>
+                    <password>3ea91a38</password>
                 </configuration>
             </plugin>
             <plugin>
@@ -95,17 +95,22 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.1</version>
+
             </plugin>
+
             <plugin>
 
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>11</source>
+                    <target>11</target>
                 </configuration>
+
             </plugin>
+
+
         </plugins>
     </build>
 </project>
