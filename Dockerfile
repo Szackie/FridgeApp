@@ -5,13 +5,13 @@ FROM adoptopenjdk/openjdk11:alpine-slim
 RUN apk update && apk upgrade && apk add --no-cache bash curl
 
 # Utworzenie folderu app
-RUN mkdir /opt/render/project/src/app
+RUN mkdir /app
 
 # Kopiowanie plików projektu do folderu app
-COPY . /opt/render/project/src/app
+COPY . /app
 
 # Ustawienie folderu roboczego
-WORKDIR /opt/render/project/src/app
+WORKDIR /app
 
 # Budowanie aplikacji z wykorzystaniem Maven
 RUN ./mvnw package -DskipTests
@@ -20,4 +20,4 @@ RUN ./mvnw package -DskipTests
 EXPOSE 8080
 
 # Uruchomienie aplikacji
-CMD ["java", "-jar", "/opt/render/project/src/app/out/artifacts/Apka_web_jar/Apka_web.jar"]
+CMD ["java", "-jar", "/app/out/artifacts/Apka_web_jar/Apka_web.jar"]
