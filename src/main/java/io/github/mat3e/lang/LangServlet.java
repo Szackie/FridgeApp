@@ -35,6 +35,7 @@ public class LangServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         logger.info("Request goes from " + getServletName());
         resp.setContentType("application/json;charset=UTF-8");
+        resp.addHeader("Access-Control-Allow-Origin","https://myfridge.onrender.com");
         mapper.writeValue(resp.getOutputStream(), langService.findAll());
     }
 }
