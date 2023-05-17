@@ -1,190 +1,190 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <title>myFridge</title>
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
-          integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
-</head>
-<body>
-<main style="width: 40%; margin: 0 auto">
-    <div id="welcome" style="text-align: center">
-        <h1>Enter your fridge name</h1>
-    </div>
-    <form id="welcomeForm" class="pure-form pure-g pure-form-aligned">
-        <input id="fridgeText" class="pure-input-rounded pure-u-1" name="name" placeholder="Fridge name">
-        <fieldset id="langs" class="pure-u-1 pure-control-group">Loading...</fieldset>
-        <button id="btn" class="pure-button pure-button-primary pure-u-1">Submit</button>
-    </form>
-    <form id="productForm" class="pure-form" style="display: none; text-align: center">
-        <fieldset>
-            <input id="productText" class="pure-input-rounded pure-input-2-3" placeholder="new Product">
-            <button id="addProduct" class="pure-button pure-button-primary">+</button>
-            <button id="deleteProduct" class="pure-button pure-button-primary">-</button>
-        </fieldset>
-        <fieldset id="allProducts"></fieldset>
-    </form>
-</main>
-<script>(function () {
+<!--<!DOCTYPE html>-->
+<!--<html lang="pl">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>myFridge</title>-->
+<!--    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"-->
+<!--          integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">-->
+<!--</head>-->
+<!--<body>-->
+<!--<main style="width: 40%; margin: 0 auto">-->
+<!--    <div id="welcome" style="text-align: center">-->
+<!--        <h1>Enter your fridge name</h1>-->
+<!--    </div>-->
+<!--    <form id="welcomeForm" class="pure-form pure-g pure-form-aligned">-->
+<!--        <input id="fridgeText" class="pure-input-rounded pure-u-1" name="name" placeholder="Fridge name">-->
+<!--        <fieldset id="langs" class="pure-u-1 pure-control-group">Loading...</fieldset>-->
+<!--        <button id="btn" class="pure-button pure-button-primary pure-u-1">Submit</button>-->
+<!--    </form>-->
+<!--    <form id="productForm" class="pure-form" style="display: none; text-align: center">-->
+<!--        <fieldset>-->
+<!--            <input id="productText" class="pure-input-rounded pure-input-2-3" placeholder="new Product">-->
+<!--            <button id="addProduct" class="pure-button pure-button-primary">+</button>-->
+<!--            <button id="deleteProduct" class="pure-button pure-button-primary">-</button>-->
+<!--        </fieldset>-->
+<!--        <fieldset id="allProducts"></fieldset>-->
+<!--    </form>-->
+<!--</main>-->
+<!--<script>(function () {-->
 
-    const API_URL = 'https://myfridge.onrender.com/api';
-    const PRODUCT_API_URL = `${API_URL}/product`;
-    const FRIDGE_API_URL = `${API_URL}/fridge`;
+<!--    const API_URL = 'https://myfridge.onrender.com/api';-->
+<!--    const PRODUCT_API_URL = `${API_URL}/product`;-->
+<!--    const FRIDGE_API_URL = `${API_URL}/fridge`;-->
 
-    let fridgeId;
-    const fridgeText = document.getElementById('fridgeText');
-    const productText = document.getElementById('productText');
+<!--    let fridgeId;-->
+<!--    const fridgeText = document.getElementById('fridgeText');-->
+<!--    const productText = document.getElementById('productText');-->
 
 
-    document.getElementById('deleteProduct').addEventListener('click', (event) => {
-        event.preventDefault();
-        fetch(PRODUCT_API_URL, {
-            method: 'DELETE',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({text: productText.value})
-        })
-            .then(processOkResponse)
-            .then(deleteDoneProduct)
-            .catch(console.warn);
-    });
+<!--    document.getElementById('deleteProduct').addEventListener('click', (event) => {-->
+<!--        event.preventDefault();-->
+<!--        fetch(PRODUCT_API_URL, {-->
+<!--            method: 'DELETE',-->
+<!--            headers: {-->
+<!--                'Accept': 'application/json',-->
+<!--                'Content-Type': 'application/json'-->
+<!--            },-->
+<!--            body: JSON.stringify({text: productText.value})-->
+<!--        })-->
+<!--            .then(processOkResponse)-->
+<!--            .then(deleteDoneProduct)-->
+<!--            .catch(console.warn);-->
+<!--    });-->
 
-    function deleteDoneProduct() {
-        const fieldset = document.getElementById('allProducts');
-        const fields = fieldset.getElementsByTagName('label');
+<!--    function deleteDoneProduct() {-->
+<!--        const fieldset = document.getElementById('allProducts');-->
+<!--        const fields = fieldset.getElementsByTagName('label');-->
 
-        var i = 0;
-        const size = fields.length;
+<!--        var i = 0;-->
+<!--        const size = fields.length;-->
 
-        for (i; i <= size; i++) {
-            if (fields[i]?.lastElementChild?.checked) {
-                fields[i].remove();
-                i--;
-            }
-        }
-    }
+<!--        for (i; i <= size; i++) {-->
+<!--            if (fields[i]?.lastElementChild?.checked) {-->
+<!--                fields[i].remove();-->
+<!--                i&#45;&#45;;-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
 
-    document.getElementById('addProduct').addEventListener('click', (event) => {
-        event.preventDefault();
-        fetch(PRODUCT_API_URL, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                text: productText.value,
-                fridge_id: fridgeId
-            })
-        })
-            .then(processOkResponse)
-            .then(createNewProduct)
-            .then(() => productText.value = '')
-            .catch(console.warn);
-    });
+<!--    document.getElementById('addProduct').addEventListener('click', (event) => {-->
+<!--        event.preventDefault();-->
+<!--        fetch(PRODUCT_API_URL, {-->
+<!--            method: 'POST',-->
+<!--            headers: {-->
+<!--                'Accept': 'application/json',-->
+<!--                'Content-Type': 'application/json'-->
+<!--            },-->
+<!--            body: JSON.stringify({-->
+<!--                text: productText.value,-->
+<!--                fridge_id: fridgeId-->
+<!--            })-->
+<!--        })-->
+<!--            .then(processOkResponse)-->
+<!--            .then(createNewProduct)-->
+<!--            .then(() => productText.value = '')-->
+<!--            .catch(console.warn);-->
+<!--    });-->
 
-    function createNewFridge(fridge) {
+<!--    function createNewFridge(fridge) {-->
 
-        fridgeId = fridge.fridge_id;
+<!--        fridgeId = fridge.fridge_id;-->
 
-        fetch(PRODUCT_API_URL)
-            .then(processOkResponse)
-            .then(products =>
-                products.forEach(createNewProduct));
-    }
+<!--        fetch(PRODUCT_API_URL)-->
+<!--            .then(processOkResponse)-->
+<!--            .then(products =>-->
+<!--                products.forEach(createNewProduct));-->
+<!--    }-->
 
-    function createNewProduct(product) {
-        if (product.fridge_id == fridgeId) {
-            const label = document.createElement('label');
-            label.classList.add('pure-checkbox');
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.checked = product.done;
-            checkbox.addEventListener('click',
-                (event) => {
-                    event.preventDefault();
-                    fetch(`${PRODUCT_API_URL}/${product.id}`, {
-                        method: 'PUT'
-                    })
-                        .then(processOkResponse)
-                        .then(updatedProduct => checkbox.checked = !!updatedProduct.done)
-                        .catch(console.warn);
-                });
-            label.appendChild(checkbox);
-            label.appendChild(document.createTextNode(` ${product.text}`));
-            document.getElementById('allProducts').appendChild(label);
-        }
-    }
+<!--    function createNewProduct(product) {-->
+<!--        if (product.fridge_id == fridgeId) {-->
+<!--            const label = document.createElement('label');-->
+<!--            label.classList.add('pure-checkbox');-->
+<!--            const checkbox = document.createElement('input');-->
+<!--            checkbox.type = 'checkbox';-->
+<!--            checkbox.checked = product.done;-->
+<!--            checkbox.addEventListener('click',-->
+<!--                (event) => {-->
+<!--                    event.preventDefault();-->
+<!--                    fetch(`${PRODUCT_API_URL}/${product.id}`, {-->
+<!--                        method: 'PUT'-->
+<!--                    })-->
+<!--                        .then(processOkResponse)-->
+<!--                        .then(updatedProduct => checkbox.checked = !!updatedProduct.done)-->
+<!--                        .catch(console.warn);-->
+<!--                });-->
+<!--            label.appendChild(checkbox);-->
+<!--            label.appendChild(document.createTextNode(` ${product.text}`));-->
+<!--            document.getElementById('allProducts').appendChild(label);-->
+<!--        }-->
+<!--    }-->
 
-    initWelcomeForm();
+<!--    initWelcomeForm();-->
 
-    function initWelcomeForm() {
+<!--    function initWelcomeForm() {-->
 
-        const CODE_TO_EMOJI = {
-            'pl': '🇵🇱',
-            'en': '🇺🇸',
-            'de': '🇩🇪',
-            'suo': '🇸🇺o'
-        };
-        fetch(`${API_URL}/langs`)
-            .then(processOkResponse)
-            .then(langArr => {
-                document.getElementById('langs').innerHTML = langArr.map(lang => `
-              <label class="pure-radio">
-                <input type="radio" name="lang" value="${lang.id}">
-                ${CODE_TO_EMOJI[lang.code]}
-              </label>
-          `).join('\n');
-                initWelcomeFormClick();
-            });
-    }
+<!--        const CODE_TO_EMOJI = {-->
+<!--            'pl': '🇵🇱',-->
+<!--            'en': '🇺🇸',-->
+<!--            'de': '🇩🇪',-->
+<!--            'suo': '🇸🇺o'-->
+<!--        };-->
+<!--        fetch(`${API_URL}/langs`)-->
+<!--            .then(processOkResponse)-->
+<!--            .then(langArr => {-->
+<!--                document.getElementById('langs').innerHTML = langArr.map(lang => `-->
+<!--              <label class="pure-radio">-->
+<!--                <input type="radio" name="lang" value="${lang.id}">-->
+<!--                ${CODE_TO_EMOJI[lang.code]}-->
+<!--              </label>-->
+<!--          `).join('\n');-->
+<!--                initWelcomeFormClick();-->
+<!--            });-->
+<!--    }-->
 
-    function initWelcomeFormClick() {
-        const welcomeForm = document.getElementById('welcomeForm');
+<!--    function initWelcomeFormClick() {-->
+<!--        const welcomeForm = document.getElementById('welcomeForm');-->
 
-        document.getElementById('btn').addEventListener('click', (event) => {
-            event.preventDefault();
-            const formObj = {
-                name: welcomeForm.elements.name.value,
-                lang: welcomeForm.elements.lang.value
-            };
-            fetch(`${API_URL}?${new URLSearchParams(formObj)}`)
-                .then(response => response.text())
-                .then((text) => {
-                    document.getElementById('welcome').innerHTML = `
-                <h1>${text}</h1>
-            `;
-                });
+<!--        document.getElementById('btn').addEventListener('click', (event) => {-->
+<!--            event.preventDefault();-->
+<!--            const formObj = {-->
+<!--                name: welcomeForm.elements.name.value,-->
+<!--                lang: welcomeForm.elements.lang.value-->
+<!--            };-->
+<!--            fetch(`${API_URL}?${new URLSearchParams(formObj)}`)-->
+<!--                .then(response => response.text())-->
+<!--                .then((text) => {-->
+<!--                    document.getElementById('welcome').innerHTML = `-->
+<!--                <h1>${text}</h1>-->
+<!--            `;-->
+<!--                });-->
 
-            fetch(`${FRIDGE_API_URL}`, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-                ,
-                body: JSON.stringify({
-                    name: fridgeText.value
-                })
-            })
-                .then(processOkResponse)
-                .then(createNewFridge)
-                .catch(console.warn);
+<!--            fetch(`${FRIDGE_API_URL}`, {-->
+<!--                method: 'POST',-->
+<!--                headers: {-->
+<!--                    'Accept': 'application/json',-->
+<!--                    'Content-Type': 'application/json'-->
+<!--                }-->
+<!--                ,-->
+<!--                body: JSON.stringify({-->
+<!--                    name: fridgeText.value-->
+<!--                })-->
+<!--            })-->
+<!--                .then(processOkResponse)-->
+<!--                .then(createNewFridge)-->
+<!--                .catch(console.warn);-->
 
-            welcomeForm.remove();
-            document.getElementById('productForm').style.display = 'block';
-        });
-    }
+<!--            welcomeForm.remove();-->
+<!--            document.getElementById('productForm').style.display = 'block';-->
+<!--        });-->
+<!--    }-->
 
-    function processOkResponse(response = {}) {
-        if (response.ok) {
-            return response.json();
-        }
-        throw new Error(`Status not 200 (${response.status})`);
-    }
-})();
-</script>
-</body>
-</html>
+<!--    function processOkResponse(response = {}) {-->
+<!--        if (response.ok) {-->
+<!--            return response.json();-->
+<!--        }-->
+<!--        throw new Error(`Status not 200 (${response.status})`);-->
+<!--    }-->
+<!--})();-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
