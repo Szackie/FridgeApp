@@ -7,11 +7,15 @@ import org.eclipse.jetty.plus.webapp.PlusConfiguration;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.util.component.LifeCycle;
 import org.eclipse.jetty.webapp.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class App {
+
     private static FridgeRepository fridgeRepository = new FridgeRepository();
 
     public static void main(String[] args) throws Exception {
+
         fridgeRepository.deleteUnusedFridge();
 
         var webapp = new WebAppContext();
