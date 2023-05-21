@@ -12,6 +12,6 @@ RUN chmod +x mvnw
 
 RUN ./mvnw package -DskipTests
 
-EXPOSE 8080
+EXPOSE 443
 
 CMD ["java", "-jar", "/app/out/artifacts/Apka_web_jar/Apka_web.jar"]

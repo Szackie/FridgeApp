@@ -7,8 +7,6 @@ import org.eclipse.jetty.plus.webapp.PlusConfiguration;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.util.component.LifeCycle;
 import org.eclipse.jetty.webapp.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class App {
 
@@ -36,7 +34,7 @@ public class App {
         webapp.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern", ".*/classes/.*");
 
 //        webapp.addServlet(HelloServlet.class,"/api/*");
-        var server = new Server(8080);
+        var server = new Server(443);
         server.setHandler(webapp);
         server.addLifeCycleListener(new LifeCycle.Listener() {
             @Override
