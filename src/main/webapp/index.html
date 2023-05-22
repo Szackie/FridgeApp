@@ -27,7 +27,9 @@
 </main>
 <script>(function () {
 
-    const API_URL = `https://myfridge.onrender.com/api`;
+    var properties = require('./src/main/resources/app.properties');
+
+    const API_URL = properties.API_URL;
     const PRODUCT_API_URL = `${API_URL}/product`;
     const FRIDGE_API_URL = `${API_URL}/fridge`;
 
