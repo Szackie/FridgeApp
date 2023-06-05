@@ -18,7 +18,7 @@
 
 
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.url">jdbc:postgresql://dpg-chv37vrhp8uco767tfgg-a.frankfurt-postgres.render.com:5432/db_myfridge_wyiw</property>
+        <property name="connection.url">jdbc:postgresql://dpg-chv37vrhp8uco767tfgg-a.frankfurt-postgres.render.com</property>
         <property name="connection.username">szackie</property>
         <property name="connection.password">3lTJ8UWVhZ09EPwU5Rg9FvewgY5qBvIm</property>
 
