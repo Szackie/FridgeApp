@@ -18,9 +18,9 @@
 
 
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.url">jdbc:postgres://szackie:vi9VcTdY42QAog5NcaUNiwIICrpcnzif@dpg-chv0fp67avj345fvspq0-a/db_myfridge</property>
+        <property name="connection.url">jdbc:postgresql://dpg-chv37vrhp8uco767tfgg-a:5432/db_myfridge_wyiw</property>
         <property name="connection.username">szackie</property>
-        <property name="connection.password">vi9VcTdY42QAog5NcaUNiwIICrpcnzif</property>
+        <property name="connection.password">3lTJ8UWVhZ09EPwU5Rg9FvewgY5qBvIm</property>
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">97</property>
