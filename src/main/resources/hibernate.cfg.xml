@@ -23,7 +23,7 @@
         <property name="connection.password">vi9VcTdY42QAog5NcaUNiwIICrpcnzif</property>
 
         <!-- JDBC connection pool (use the built-in) -->
-        <property name="connection.pool_size">10</property>
+        <property name="connection.pool_size">97</property>
 
         <!-- SQL dialect -->
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
