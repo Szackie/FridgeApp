@@ -18,7 +18,7 @@
 
 
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.url">jdbc:postgres://szackie:3lTJ8UWVhZ09EPwU5Rg9FvewgY5qBvIm@dpg-chv37vrhp8uco767tfgg-a/db_myfridge_wyiw</property>
+        <property name="connection.url">jdbc:postgresql://dpg-chv37vrhp8uco767tfgg-a.frankfurt-postgres.render.com:5432/db_myfridge_wyiw</property>
         <property name="connection.username">szackie</property>
         <property name="connection.password">3lTJ8UWVhZ09EPwU5Rg9FvewgY5qBvIm</property>
 
@@ -33,7 +33,7 @@
 
         <property name="hibernate.hbm2ddl.charset_name">UTF-8</property>
         <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">validate</property>
+        <property name="hbm2ddl.auto">update</property>
         <!-- Names the annotated entity class -->
         <mapping class="io.github.mat3e.lang.Lang"/>
         <mapping class="io.github.mat3e.product.Product"/>
