@@ -91,7 +91,7 @@
                 <version>8.0.0</version>
                 <configuration>
 
-                    <url>jdbc:postgresql://dpg-chv37vrhp8uco767tfgg-a:5432/db_myfridge_wyiw</url>
+                    <url>jdbc:postgresql://dpg-chv37vrhp8uco767tfgg-a.frankfurt-postgres.render.com:5432/db_myfridge_wyiw</url>
                     <user>szackie</user>
                     <password>3lTJ8UWVhZ09EPwU5Rg9FvewgY5qBvIm</password>
                 </configuration>
