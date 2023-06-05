@@ -53,11 +53,18 @@
             <version>2.13.2.2</version>
             <scope>compile</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.32</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.6.0</version>
         </dependency>
+
+        <!--        <dependency>-->
+<!--            <groupId>mysql</groupId>-->
+<!--            <artifactId>mysql-connector-java</artifactId>-->
+<!--            <version>8.0.32</version>-->
+<!--        </dependency>-->
 
 
     </dependencies>
@@ -81,9 +88,9 @@
                 <version>8.0.0</version>
                 <configuration>
 
-                    <url>jdbc:mysql://db4free.net:3306/db4free_szackie</url>
+                    <url>jdbc:postgres://szackie:vi9VcTdY42QAog5NcaUNiwIICrpcnzif@dpg-chv0fp67avj345fvspq0-a/db_myfridge</url>
                     <user>szackie</user>
-                    <password>3ea91a38</password>
+                    <password>vi9VcTdY42QAog5NcaUNiwIICrpcnzif</password>
                 </configuration>
             </plugin>
             <plugin>

@@ -17,16 +17,16 @@
         <!-- Database connection settings -->
 
 
-        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://db4free.net:3306/db4free_szackie</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.url">jdbc:postgres://szackie:vi9VcTdY42QAog5NcaUNiwIICrpcnzif@dpg-chv0fp67avj345fvspq0-a/db_myfridge</property>
         <property name="connection.username">szackie</property>
-        <property name="connection.password">3ea91a38</property>
+        <property name="connection.password">vi9VcTdY42QAog5NcaUNiwIICrpcnzif</property>
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">10</property>
 
         <!-- SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
