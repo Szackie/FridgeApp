@@ -14,7 +14,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-  //      fridgeRepository.deleteUnusedFridge();
+        fridgeRepository.deleteUnusedFridge();
 
         var webapp = new WebAppContext();
         webapp.setResourceBase("src/main/webapp");
