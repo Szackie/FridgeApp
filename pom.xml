@@ -55,19 +55,15 @@
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.6.0</version>
+            <scope>compile</scope>
         </dependency>
 
-
-
-        <!--        <dependency>-->
-<!--            <groupId>mysql</groupId>-->
-<!--            <artifactId>mysql-connector-java</artifactId>-->
-<!--            <version>8.0.32</version>-->
-<!--        </dependency>-->
 
 
     </dependencies>
@@ -85,17 +81,17 @@
     <build>
         <plugins>
 
-<!--            <plugin>-->
-<!--                <groupId>org.flywaydb</groupId>-->
-<!--                <artifactId>flyway-maven-plugin</artifactId>-->
-<!--                <version>8.0.0</version>-->
-<!--                <configuration>-->
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>8.0.0</version>
+                <configuration>
 
-<!--                    <url>jdbc:postgresql://dpg-chv37vrhp8uco767tfgg-a.frankfurt-postgres.render.com:5432/db_myfridge_wyiw</url>-->
-<!--                    <user>szackie</user>-->
-<!--                    <password>3lTJ8UWVhZ09EPwU5Rg9FvewgY5qBvIm</password>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
+                    <url>jdbc:postgresql://dpg-chv37vrhp8uco767tfgg-a.frankfurt-postgres.render.com:5432/db_myfridge_wyiw</url>
+                    <user>szackie</user>
+                    <password>3lTJ8UWVhZ09EPwU5Rg9FvewgY5qBvIm</password>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
