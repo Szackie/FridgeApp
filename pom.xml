@@ -67,7 +67,18 @@
             <version>6.0.0.Alpha6</version>
 
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>apache-jsp</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>apache-jstl</artifactId>
+            <version>${jetty.version}</version>
+            <type>pom</type>
+        </dependency>
         <!--        json-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
