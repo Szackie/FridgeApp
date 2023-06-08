@@ -31,7 +31,29 @@
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-annotations</artifactId>
             <version>${jetty.version}</version>
+
         </dependency>
+        <!--test start:-->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>apache-jsp</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+
+
+
+        <!--            test end-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -57,13 +79,17 @@
 
         <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 
+<!--        <dependency>-->
+<!--            <groupId>org.postgresql</groupId>-->
+<!--            <artifactId>postgresql</artifactId>-->
+<!--            <version>42.6.0</version>-->
+<!--            <scope>compile</scope>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.6.0</version>
-            <scope>compile</scope>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.32</version>
         </dependency>
-
 
 
     </dependencies>
@@ -75,28 +101,39 @@
         <java.version>11</java.version>
         <junit.version>4.12</junit.version>
         <slf4j.version>1.7.25</slf4j.version>
-        <jetty.version>9.4.46.v20220331</jetty.version>
+        <jetty.version>11.0.15</jetty.version>
 
     </properties>
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>8.0.0</version>
                 <configuration>
-
-                    <url>jdbc:postgresql://dpg-chv37vrhp8uco767tfgg-a.frankfurt-postgres.render.com:5432/db_myfridge_wyiw</url>
+                    <!--FIXME-->
+                    <url>jdbc:mysql://db4free.net:3306/db4free_szackie</url>
                     <user>szackie</user>
-                    <password>3lTJ8UWVhZ09EPwU5Rg9FvewgY5qBvIm</password>
+                    <password>3ea91a38</password>
                 </configuration>
             </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.flywaydb</groupId>-->
+<!--                <artifactId>flyway-maven-plugin</artifactId>-->
+<!--                <version>8.0.0</version>-->
+<!--                <configuration>-->
+
+<!--                    <url>jdbc:postgresql://dpg-chv37vrhp8uco767tfgg-a.frankfurt-postgres.render.com:5432/db_myfridge_wyiw</url>-->
+<!--                    <user>szackie</user>-->
+<!--                    <password>3lTJ8UWVhZ09EPwU5Rg9FvewgY5qBvIm</password>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty.version}</version>
             </plugin>
+
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

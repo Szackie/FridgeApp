@@ -18,7 +18,9 @@ public class HibernateUtil {
     private static SessionFactory buildSessionFactory() {
         // A SessionFactory is set up once for an application!
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
+
                 .configure() // configures settings from hibernate.cfg.xml
+                .applySetting("hibernate.connection.url", "jdbc:mysql://db4free.net:3306/db4free_szackie")
                 .build();
         try {
             return new MetadataSources(registry).buildMetadata().buildSessionFactory();
