@@ -17,9 +17,9 @@
         <!-- Database connection settings -->
 
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://db4free.net:3306/db4free_szackie</property>
-        <property name="connection.username">szackie</property>
-        <property name="connection.password">3ea91a38</property>
+        <property name="connection.url">${env.MY_DB_URL}</property>
+        <property name="connection.username">${env.MY_DB_USER}</property>
+        <property name="connection.password">${env.MY_DB_PASS}</property>
 <!--        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>-->
 <!--        <property name="connection.url">jdbc:postgresql://dpg-chv37vrhp8uco767tfgg-a.frankfurt-postgres.render.com:5432/db_myfridge_wyiw</property>-->
 <!--        <property name="connection.username">szackie</property>-->
@@ -38,9 +38,9 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">validate</property>
         <!-- Names the annotated entity class -->
-        <mapping class="io.github.mat3e.lang.Lang"/>
-        <mapping class="io.github.mat3e.product.Product"/>
-        <mapping class="io.github.mat3e.fridge.Fridge"/>
+        <mapping class="fridge.szackie.lang.Lang"/>
+        <mapping class="fridge.szackie.product.Product"/>
+        <mapping class="fridge.szackie.fridge.Fridge"/>
     </session-factory>
 
 </hibernate-configuration>
